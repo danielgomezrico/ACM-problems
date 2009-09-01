@@ -1,0 +1,63 @@
+/* 
+   Daniel Gomez Rico
+   danielgomezrico@gmail.com
+   2009
+
+   10252 Common Permutation
+   
+  //http://icpcres.ecs.baylor.edu/onlinejudge/index.php?option=com_onlinejudge&Itemid=8&category=14&page=show_problem&problem=1193
+ */
+
+
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+  string a,b;//Las dos palabras
+  unsigned long long asize, bsize;//size de las dos palabras
+  string res;//Resultado para cada caso de prueba
+  while(getline(cin, a) && getline(cin, b) ){
+    res = "";
+    asize = a.size();
+    bsize = b.size();
+//Donde van a estar los caracteres que esten en las dos palabras (esta estructura las organiza y sus elemenos son unicos)
+    set <char> sRes;
+    
+    //Buscamos los elemenos que estan en las dos palabras y los metemos a sRes
+    for(unsigned long long i = 0; i < asize; i++){
+      for(unsigned long long j = 0; j < bsize; j++){
+	if(a[i]== b[j]){
+	  sRes.insert(a[i]);   
+	  break;       
+	}  
+      }
+    }
+    //Buscamos para cada caracter en sRes cuantas veces este se repite en una y en la palabra, y al resultado le agregamos
+    //La letra repetida el numero de veces menor entre las dos palabras (la menor entre n1 y n2), ya que asi aseguramos
+    //que esta esta en las dos, si es mayor no estaria en las dos y no cumplirira
+    for(set<char>::iterator it = sRes.begin(); it != sRes.end();it++){
+      char c = *it;
+      unsigned long long n1 = 0, n2= 0;  //Numero de veces que se repite para cada char de sRes
+      for(unsigned long long i = 0; i < asize; i++){
+	if(a[i]== c){
+	  n1++;
+	}
+      }
+      for(unsigned long long i = 0; i < bsize; i++){
+	if(b[i]== c){
+	  n2++;
+	}
+      }
+//Se le cambia el tamanio y le agrega al final el char en que estamos de sRes repetido numero de veces del n1 o n2  menor
+      if(n1 < n2){res.resize(res.size() + n1, c);}
+      else{res.resize(res.size() + n2, c);}
+    }
+    printf(res.c_str());		 
+    printf("\n");
+  }
+  
+  return 0;
+}

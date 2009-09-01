@@ -1,0 +1,48 @@
+//http://icpcres.ecs.baylor.edu/onlinejudge/index.php?option=com_onlinejudge&Itemid=8&category=14&page=show_problem&problem=1193
+#include <iostream>
+#include <set>
+#include <fstream>
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    string a,b;//Las dos palabras
+    unsigned long long alen, blen;
+	string res;
+    //while(cin >> a >> b ){ // >> a >> b) {
+	while(getline(cin, a) && getline(cin, b)  ){
+			  res = "";
+              alen = a.size();
+              blen = b.size();
+              set <char> sRes;
+			  
+              for(unsigned long long i = 0; i < alen; i++){
+                      for(unsigned long long j = 0; j < blen; j++){
+                            if(a[i]== b[j]){
+                                      sRes.insert(a[i]);   
+									  break;       
+                            }  
+                      }
+              }
+              for(set<char>::iterator it = sRes.begin(); it != sRes.end();it++){
+	                char c = *it;
+					unsigned long long n1 = 0, n2= 0;  
+					for(unsigned long long i = 0; i < alen; i++){
+                     		if(a[i]== c){
+							    n1++;
+							}
+					}
+					for(unsigned long long i = 0; i < blen; i++){
+                            if(b[i]== c){
+							    n2++;
+							}
+                    }
+					if(n1 < n2){res.resize(res.size() + n1, c);}
+					else{res.resize(res.size() + n2, c);}
+              }
+			  printf(res.c_str());		 
+			  printf("\n");
+    }
+    return 0;
+}
