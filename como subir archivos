@@ -1,0 +1,8 @@
+mkdir directorio
+  cd directorio
+  git init
+  git add archivo
+  git commit -m 'first commit'
+   git remote add origin git@github.com:danielgomezrico/ACM-problems.git -> no siempre
+  git push origin master
+
