@@ -1,8 +1,34 @@
-mkdir directorio
-  cd directorio
+Global setup:
+
+  Download and install Git
+  git config --global user.name "Daniel"
+  git config --global user.email danielgomezrico@gmail.com
+        
+
+Next steps:
+
+  mkdir kijonkl
+  cd kijonkl
   git init
-  git add archivo
+  touch README
+  git add README
   git commit -m 'first commit'
-   git remote add origin git@github.com:danielgomezrico/ACM-problems.git -> no siempre
+  git remote add origin git@github.com:danielgomezrico/ACM-problems.git
   git push origin master
+      
+
+Existing Git Repo?
+
+  cd existing_git_repo
+   git remote add origin git@github.com:danielgomezrico/ACM-problems.git
+  git push origin master
+     
+LLave: 
+
+ssh-keygen -t rsa -C "tekkub@gmail.com"
+
+luego:
+
+cd ~/.ssh
+cat el .pub y esa es
 
